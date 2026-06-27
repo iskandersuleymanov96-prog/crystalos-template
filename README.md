@@ -59,7 +59,7 @@ crystalos-template/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/crystalos-template.git
+git clone https://github.com/iskandersuleymanov96-prog/crystalos-template.git
 
 # Navigate to the project
 cd crystalos-template

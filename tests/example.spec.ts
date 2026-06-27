@@ -6,14 +6,14 @@ test.describe('Homepage', () => {
 
     await expect(page).toHaveTitle(/CrystalOS/);
 
-    await expect(page.locator('text=CrystalOS Template')).toBeVisible();
-    await expect(page.locator('text=Production-ready starter template')).toBeVisible();
+    await expect(page.locator('h1', { hasText: 'CrystalOS Template' })).toBeVisible();
+    await expect(page.locator('p', { hasText: 'Production-ready starter template' })).toBeVisible();
   });
 
   test('should have working navigation', async ({ page }) => {
     await page.goto('/');
 
-    const componentsLink = page.locator('a', { hasText: 'Components' });
+    const componentsLink = page.getByRole('link', { name: 'Components', exact: true });
     await expect(componentsLink).toBeVisible();
 
     await componentsLink.click();
@@ -27,8 +27,9 @@ test.describe('Components Page', () => {
 
     await expect(page.locator('h1', { hasText: 'Components' })).toBeVisible();
 
-    await expect(page.locator('text=Button')).toBeVisible();
-    await expect(page.locator('text=Card')).toBeVisible();
-    await expect(page.locator('text=Input')).toBeVisible();
+    await expect(page.getByRole('tab', { name: 'Buttons' })).toBeVisible();
+    await expect(page.getByRole('tab', { name: 'Cards' })).toBeVisible();
+    await expect(page.getByRole('tab', { name: 'Forms' })).toBeVisible();
+    await expect(page.getByRole('tab', { name: 'Overlays' })).toBeVisible();
   });
 });
